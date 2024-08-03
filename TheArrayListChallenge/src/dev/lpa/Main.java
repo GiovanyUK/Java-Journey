@@ -48,14 +48,14 @@ public class Main {
         for (int i = 0; i < groceriesString.length(); i++) {
             if (groceriesString.charAt(i) != ',') {
                 groceries += groceriesString.charAt(i);
-            } else if (groceryList.isEmpty() || !groceryList.contains(groceries)) {
+            } else if (groceryList.isEmpty() || !groceryList.contains(groceries) && !groceryList.contains(groceries.trim())) {
                 groceryList.add(groceries);
                 groceries = "";
             } else {
                 groceries = "";
             }
         }
-        if (!groceryList.contains(groceries)) {
+        if (!groceryList.contains(groceries) && !groceryList.contains(groceries.trim())) {
             groceryList.add(groceries);
         }
         System.out.println(groceryList);
@@ -68,15 +68,15 @@ public class Main {
         for (int i = 0; i < groceriesString.length(); i++) {
             if (groceriesString.charAt(i) != ',') {
                 groceries += groceriesString.charAt(i);
-            } else if (groceryList.contains(groceries)) {
+            } else if (groceryList.contains(groceries) && groceryList.contains(groceries.trim())) {
                 groceryList.remove(groceries);
                 groceries = "";
             } else {
                 groceries = "";
             }
         }
-        if (groceryList.contains(groceries)) {
-            groceryList.remove(groceries);
+        if (groceryList.contains(groceries) || groceryList.contains(groceries.trim())) {
+            groceryList.remove(groceries.trim());
         }
         System.out.println(groceryList);
         groceryList.sort(Comparator.naturalOrder());
